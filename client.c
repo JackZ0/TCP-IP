@@ -64,8 +64,11 @@ if((nbytes=read(sockfd,buffer,1024))==-1)
  } 
  buffer[nbytes]='\0'; 
  printf("I have received:%s\n",buffer); 
+
 /* 结束通讯     */ 
  close(sockfd); 
+ 
+ printf("I have close\n"); 
  exit(0); 
 } 
 
