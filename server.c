@@ -7,7 +7,7 @@
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <netinet/in.h>
-
+#include <arpa/inet.h>   
 int main(int argc, char *argv[]) 
 { 
  int sockfd,new_fd; 
@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
         exit(1); 
     } 
     printf("accept ok \n");
-//    fprintf(stderr,"Server get connection from %s\n",inet_ntoa(client_addr.sin_addr)); 
     char string[40]; 
     strcpy(string, "Hello, world!\n");
     if(write(new_fd,string,strlen(string))==-1) 
