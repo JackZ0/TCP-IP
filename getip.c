@@ -18,14 +18,11 @@
 #include <netinet/in.h>  
 #include <arpa/inet.h>  
 #include <netdb.h>  
-  
-  
 int main (int argc, const char * argv[])   
 {  
-  
     struct ifaddrs * ifAddrStruct=NULL;  
     void * tmpAddrPtr=NULL;  
-  
+
     getifaddrs(&ifAddrStruct);  
   
     while (ifAddrStruct!=NULL)   
