@@ -7,15 +7,15 @@ void main(){
     if (fd== 0) 
     {
         /* 子进程程序 */
-    printf("fd = %d \n",fd);
+        printf("fd = %d \n",fd);
         for (i = 1; i <10; i++)
-            printf(" %d This is child process 子进程程序 \n",i);
+        printf(" %d This is child process 子进程程序 \n",i);
     }
     else 
     {
         /* 父进程程序*/
         for (i = 1; i <10; i++)
-    printf("fd = %d \n",fd);
-            printf("%d This is parent process 父进程程序 \n",i);
+        printf("fd = %d \n",fd);
+        printf("%d This is parent process 父进程程序 \n",i);
     }
 }
