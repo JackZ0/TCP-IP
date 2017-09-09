@@ -20,14 +20,11 @@ int main(int argc, char **argv)
         printf(" error format,it must be:\n\t\t%s IP port\n",argv[0]);  
         exit(EXIT_FAILURE);  
     }  
-  
     if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {  
         perror("Socket");  
         exit(errno);  
     }  
     printf("socket created\n");  
-  
-  
     bzero(&dest, sizeof(dest));  
     dest.sin_family = AF_INET;  
     dest.sin_port = htons(atoi(argv[2]));  
@@ -41,7 +38,6 @@ int main(int argc, char **argv)
         exit(errno);  
     }  
     printf("server connected\n");  
-  
     pid_t pid;  
     if(-1==(pid=fork()))  
     {  
