@@ -26,10 +26,12 @@ ssize_t process_http(int sockfd, char *host, char *page, char *poststr)
 	char sendline[MAXLINE + 1], recvline[MAXLINE + 1];
 	ssize_t n;
 	snprintf(sendline, MAXSUB,
-		 "POST %s HTTP/1.0\r\n"
-		 "Host: %s\r\n"
-		 "Content-type: application/x-www-form-urlencoded\r\n"
-		 "Content-length: %d\r\n\r\n"
+                 "HOST: %s\r\n"
+                 "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0\r\n"
+                 "Accep:*/*\r\n"
+                 "Accept-Language:zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3\r\n"
+                 "Accept-Encoding:gzip, deflate, br\r\n"
+                 "Connection: keep-alive\r\n"
 		 "%s", page, host, strlen(poststr), poststr);
 
 	write(sockfd, sendline, strlen(sendline));
@@ -48,7 +50,7 @@ int main(void)
 	char **pptr;
 	//********** You can change. Puy any values here *******
 	char *hname = "vdi.talengain.com";
-	char *page = "/chirico/test.php";
+	char *page = "/vpn/index.html";
 	char *poststr = "mode=login&user=test&password=test\r\n";
 	//*******************************************************
 
@@ -72,7 +74,7 @@ int main(void)
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
-	servaddr.sin_port = htons(443);
+	servaddr.sin_port = htons(38251);
 	inet_pton(AF_INET, str, &servaddr.sin_addr);
 
 	connect(sockfd, (SA *) & servaddr, sizeof(servaddr));
